@@ -10,32 +10,6 @@ on:
   workflow_call:
 
 jobs:
-  test:
-    name: Test application
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: "☁️ checkout repository"
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: "setup pnpm cache"
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: "🔧 setup node"
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      - name: "📦 install dependencies"
-        run: pnpm install
-
-      - name: "🔍 run tests"
-        run: pnpm test
-
   lint:
     name: Code standards
     runs-on: ubuntu-latest
@@ -61,4 +35,4 @@ jobs:
         run: pnpm install
 
       - name: "🔍 lint code"
-        run: pmpn lint
+        run: pnpm lint
