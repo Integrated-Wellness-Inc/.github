@@ -10,26 +10,49 @@ on:
   workflow_call:
 
 jobs:
-  build:
+  test:
+    name: Test application
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Check out code
+      - name: "☁️ checkout repository"
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-
-      - name: Setup Node.js environment
+      - name: "🔧 setup node"
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
 
-      - name: Install dependencies and build
+      - name: "🔧 install npm@latest"
+        run: pnpm i -g npm@latest
+
+      - name: "📦 install dependencies"
         run: pnpm install
 
-      - name: Build
-        run: pnpm build
+      - name: "🔍 run tests"
+        run: pnpm run test --if-present
+
+  lint:
+    name: Code standards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: "📦 install dependencies"
+        run: pnpm install
+
+      - name: "🔍 lint code"
+        run: pmpn lint --if-present
