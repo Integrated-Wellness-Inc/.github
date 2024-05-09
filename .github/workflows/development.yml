@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: "install pnpm"
+      - name: "setup pnpm cache"
         uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -46,10 +46,16 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: "setup pnpm cache"
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: "🔧 setup node"
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "pnpm"
 
       - name: "📦 install dependencies"
         run: pnpm install
