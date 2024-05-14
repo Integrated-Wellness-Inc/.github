@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: amannn/action-semantic-pull-request@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
   welcome:
     name: Welcome
@@ -31,6 +31,6 @@ jobs:
     steps:
       - uses: actions/first-interaction@v1
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.PERSONAL_TOKEN }}
           pr-message: |
             Congrats on making your first Pull Request and thanks for taking the time to improve Golivwell! ❤️🎉🍕
