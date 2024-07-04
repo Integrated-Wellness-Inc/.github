@@ -32,7 +32,7 @@ jobs:
           cache: "pnpm"
 
       - name: "📦 install dependencies"
-        run: pnpm install
+        run: npx pnpm i -g pnpm@latest
 
       - name: "🔍 lint code"
         run: pnpm lint
