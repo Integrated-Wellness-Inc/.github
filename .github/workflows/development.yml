@@ -23,12 +23,12 @@ jobs:
       - name: "setup pnpm cache"
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: "🔧 setup node"
         uses: actions/setup-node@v4
         with:
-          node-version: 19
+          node-version: 20
           cache: "pnpm"
 
       - name: "📦 install dependencies"
